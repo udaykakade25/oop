@@ -1,0 +1,89 @@
+//Write a function template for selection sort that inputs, sorts and outputs an integer array and a
+float array
+#include <iostream>
+using namespace std;
+template <class T> // function template
+//function for selection sort
+void sort(T a[], int n)
+{
+int i, j, min_index;
+T temp;
+for (int i = 0; i < n-1; i++)
+{
+min_index = i;
+for (int j = i + 1; j < n; j++)
+{
+if (a[j] < a[min_index])
+{
+// changing minimum index if element at jth index is smaller
+min_index = j;
+}
+}
+if (min_index != i)
+{
+//swapping if minimum index changes
+temp = a[i];
+a[i] = a[min_index];
+a[min_index] = temp;
+}
+}
+cout << "--- Sorted elements are ---" << endl;
+for (int i = 0; i < n; i++)
+{
+cout << a[i] << "\t";
+}
+cout << endl;
+cout<<"-----------------------------------\n";
+}
+int main()
+{
+int n, i, ch;
+int a[100];
+float b[100];
+do
+{
+cout << "\n---------------**MENU**---------------" << endl;
+cout << "Selection Sort using templates: " << endl;
+cout << "1 = Sort Integers." << endl;
+cout << "2 = Sort Floating point numbers." << endl;
+cout << "3 = Exit" << endl;
+cout << "--------------------------------------" << endl;
+cout<<"Enter Your Choice : ";
+cin >> ch;
+//calling function according to user's choice
+switch(ch)
+{
+case 1:
+cout << "\n------Sorting Integers------" << endl;
+cout << "Enter number of integers to sort : ";
+cin >> n;
+cout << "Enter the numbers : " ;
+//taking input for integers
+for (int i = 0; i < n; i++)
+{
+cin >> a[i];
+}
+//calling sort function for integers
+sort(a, n);
+break;
+case 2:
+cout << "\n-----Sorting floaring point numbers----- " << endl;
+cout << "Enter number of floating point numbers to sort : ";
+cin >> n;
+cout << "Enter the numbers : ";
+//taking input for floating point numbers
+for (int i = 0; i < n; i++)
+{
+cin >> b[i];
+}
+//calling sort function for floating point numbers
+sort(b, n);
+break;
+case 3:
+cout<<"\n-------------Thank You-------------";
+exit(0);
+break;
+}// end of switch case
+}while(ch != 3);
+return 0;
+}
