@@ -1,0 +1,34 @@
+#include <iostream>
+#include <map>
+#include <string>
+
+using namespace std;
+
+int main() {
+    // Create a map to store state names and their populations
+    map<string, int> statePopulation;
+
+    // Add some states and their populations to the map
+    statePopulation["California"] = 39538223;
+    statePopulation["Texas"] = 29145505;
+    statePopulation["Florida"] = 21538187;
+    statePopulation["New York"] = 20201249;
+    statePopulation["Pennsylvania"] = 13002700;
+
+    // Prompt the user to enter the name of a state
+    string stateName;
+    cout << "Enter the name of a state: ";
+    getline(cin, stateName);
+
+    // Search for the state in the map
+    auto it = statePopulation.find(stateName);
+    if (it != statePopulation.end()) {
+        // If the state is found, display its population
+        cout << "The population of " << stateName << " is " << it->second << "." << endl;
+    } else {
+        // If the state is not found, display an error message
+        cout << "State not found in the database." << endl;
+    }
+
+    return 0;
+}
